@@ -11,8 +11,8 @@
       "id": 2,
       "message": "Workstation 007 not posting",
       "attention": true,
-      "date": "03-02-2020",
-      "tech": "John Doe"
+      "tech": "John Doe",
+      "date": "2020-05-02T07:53:11.061Z"
     },
     {
       "id": 3,
@@ -20,6 +20,13 @@
       "attention": false,
       "date": "03-02-2020",
       "tech": "Sara Wilson"
+    },
+    {
+      "id": 4,
+      "message": "Fixed",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2020-05-02T08:03:03.894Z"
     }
   ],
   "techs": [
