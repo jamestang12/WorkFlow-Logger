@@ -24,8 +24,8 @@ const App = () => {
         <SearchBar />
         <div className="container">
           <AddBtn />
-          <AddLogModal />
           <EditLogModal />
+          <AddLogModal />
           <AddTechModal />
           <TechListModal />
           <Logs />
