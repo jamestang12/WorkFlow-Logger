@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TechItem from "./TechItem";
+import { getTechs } from "../../actions/techActions";
 
-export const TechListModel = () => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+export const TechListModel = ({ getTechs, tech: { techs, loading } }) => {
   useEffect(() => {
     getTechs();
     //eslint-disable-next-line
   }, []);
-
-  const getTechs = async () => {
-    setLoading(true);
-    const res = await fetch("/techs");
-    const data = await res.json();
-
-    setTechs(data);
-    setLoading(false);
-  };
 
   return (
     <div id="tech-list-modal" className="modal">
@@ -25,6 +16,7 @@ export const TechListModel = () => {
         <h4>Techician List</h4>
         <ul className="collection">
           {!loading &&
+            techs !== null &&
             techs.map((tech) => <TechItem tech={tech} key={tech.id} />)}
         </ul>
       </div>
@@ -32,4 +24,13 @@ export const TechListModel = () => {
   );
 };
 
-export default TechListModel;
+TechListModel.propTypes = {
+  tech: PropTypes.object.isRequired,
+  getTechs: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  tech: state.tech,
+});
+
+export default connect(mapStateToProps, { getTechs })(TechListModel);
